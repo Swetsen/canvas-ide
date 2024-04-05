@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useParams } from "react-router-dom";
 
 function IDE() {
@@ -7,7 +6,7 @@ function IDE() {
 
   return (
     <>
-      <h>{id}</h>
+      <h1>{id}</h1>
     </>
   );
 }

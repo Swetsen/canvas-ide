@@ -1,0 +1,58 @@
+body {
+  background-color: #11111b;
+}
+
+.Center {
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.Buttons {
+  margin-top: 2.5%;
+  height: 77.5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: auto;
+  background: #313244;
+  width: 47.75%;
+}
+
+.Frame:hover {
+  background: #585b70;
+}
+
+.Frame:active {
+  background: #45475a;
+}
+
+.Seperator {
+  width: 2.5%;
+}
+
+.Title {
+  height: 20%;
+  background: #1e1e2e;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.Title p {
+  user-select: auto;
+  font-size: 200%;
+}
+
+p {
+  user-select: none;
+  font-family: "Tilt Neon";
+  color: #cdd6f4;
+}
