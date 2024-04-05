@@ -1,7 +1,5 @@
 import React from "react";
-
-// It works: don't touch ;)
-if (window?.location.pathname === "/") require("../css/ProjectSelector.css");
+import "../css/ProjectSelector.css";
 
 function ProjectSelector() {
   return (
@@ -15,7 +13,10 @@ function ProjectSelector() {
             <p>Create New Project</p>
           </div>
           <div className="Seperator"></div>
-          <div className="Frame" onClick={() => console.log("test")}>
+          <div
+            className="Frame"
+            onClick={() => window.ipcRenderer.send("create")}
+          >
             <p>Open Project</p>
           </div>
         </div>

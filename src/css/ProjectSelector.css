@@ -3,16 +3,20 @@ body {
 }
 
 .Center {
-  width: 30%;
-  height: 30%;
+  width: 50%;
+  height: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .Buttons {
   margin-top: 2.5%;
-  height: 77.5%;
+  height: 50%;
   display: flex;
   justify-content: space-between;
 }
@@ -48,7 +52,7 @@ body {
 
 .Title p {
   user-select: auto;
-  font-size: 200%;
+  font-size: 40px;
 }
 
 p {
