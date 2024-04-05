@@ -5,12 +5,14 @@ import IDE from "./IDE";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={ProjectSelector} />
-        <Route path="/project/:id" element={IDE} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<ProjectSelector />} />
+          <Route path="/project/:id" element={<IDE />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
