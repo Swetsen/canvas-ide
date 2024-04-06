@@ -14,16 +14,18 @@ process.env.DIST = path.join(__dirname, "../dist");
 process.env.VITE_PUBLIC = app.isPackaged
   ? process.env.DIST
   : path.join(process.env.DIST, "../public");
-
+const indexPath = path.join(process.env.DIST, "index.html");
 let win: BrowserWindow | null;
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - Vite@2.x
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
 
+let projectSelector: BrowserWindow;
+
 function createWindow() {
-  win = new BrowserWindow({
+  projectSelector = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: true,
+    frame: false,
     resizable: false,
     icon: path.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
     webPreferences: {
@@ -32,15 +34,15 @@ function createWindow() {
   });
 
   // Test active push message to Renderer-process.
-  win.webContents.on("did-finish-load", () => {
+  projectSelector.webContents.on("did-finish-load", () => {
     win?.webContents.send("main-process-message", new Date().toLocaleString());
   });
 
   if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL);
+    projectSelector.loadURL(VITE_DEV_SERVER_URL);
   } else {
     // win.loadFile('dist/index.html')
-    win.loadFile(path.join(process.env.DIST, "index.html"));
+    projectSelector.loadFile(path.join(process.env.DIST, "index.html"));
   }
 }
 
@@ -62,23 +64,21 @@ app.on("activate", () => {
   }
 });
 
-ipcMain.on("create", (event, args) => {
+ipcMain.on("testing", (event, args) => {
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    frame: false,
-    resizable: false,
-    icon: path.join(process.env.VITE_PUBLIC, "electron-vite.svg"),
+    frame: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
   });
 
+  projectSelector.close();
+
   if (VITE_DEV_SERVER_URL) {
-    win.loadURL(VITE_DEV_SERVER_URL);
+    win.loadURL(VITE_DEV_SERVER_URL + "/#/project");
   } else {
-    // win.loadFile('dist/index.html')
-    win.loadFile(path.join(process.env.DIST, "index.html"));
+    const projectRoute = `file://${indexPath}#/project`;
+    win.loadURL(projectRoute);
   }
 });
 

@@ -15,7 +15,7 @@ function ProjectSelector() {
           <div className="Seperator"></div>
           <div
             className="Frame"
-            onClick={() => window.ipcRenderer.send("create")}
+            onClick={() => window.ipcRenderer.send("testing")}
           >
             <p>Open Project</p>
           </div>
