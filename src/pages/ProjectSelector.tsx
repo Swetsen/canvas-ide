@@ -1,7 +1,18 @@
-import React from "react";
-import "../css/ProjectSelector.css";
+import React, { useEffect } from "react";
 
 function ProjectSelector() {
+  useEffect(() => {
+    import("../css/ProjectSelector.css")
+      .then(() => {
+        // Styles have been loaded
+        console.log("CSS loaded dynamically");
+      })
+      .catch((err) => {
+        // Handle failure
+        console.error("Failed to load CSS dynamically", err);
+      });
+  }, []);
+
   return (
     <>
       <div className="Center">

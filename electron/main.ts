@@ -1,5 +1,6 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
+import fs from "fs";
 
 // The built directory structure
 //
@@ -67,6 +68,8 @@ app.on("activate", () => {
 ipcMain.on("testing", (event, args) => {
   win = new BrowserWindow({
     frame: true,
+    width: 1050,
+    height: 775,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -80,6 +83,28 @@ ipcMain.on("testing", (event, args) => {
     const projectRoute = `file://${indexPath}#/project`;
     win.loadURL(projectRoute);
   }
+});
+
+ipcMain.on("readDirFiles", (event, dirPath) => {
+  fs.readdir(dirPath, { withFileTypes: true }, (err, dirents) => {
+    if (err) {
+      console.error("Failed to read directory", err);
+      event.sender.send("readDirFilesResponse", {
+        error: true,
+        message: err.message,
+      });
+      return;
+    }
+    const filesAndDirs = dirents.map((dirent) => ({
+      name: dirent.name,
+      type: dirent.isDirectory() ? "directory" : "file",
+      path: path.join(dirPath, dirent.name),
+    }));
+    event.sender.send("readDirFilesResponse", {
+      error: false,
+      data: filesAndDirs,
+    });
+  });
 });
 
 app.whenReady().then(createWindow);

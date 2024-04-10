@@ -1,10 +1,26 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import FileTree from "../components/FileTree";
 
 function IDE() {
+  useEffect(() => {
+    import("../css/IDE.css")
+      .then(() => {
+        // Styles have been loaded
+        console.log("CSS loaded dynamically");
+      })
+      .catch((err) => {
+        // Handle failure
+        console.error("Failed to load CSS dynamically", err);
+      });
+  }, []);
+
+  const dir = "C:/Users/madad/OneDrive/Desktop/canvasproject";
+
   return (
     <>
-      <h1>Hi!</h1>
+      <div className="filetree">
+        <FileTree dir={dir} />
+      </div>
     </>
   );
 }
