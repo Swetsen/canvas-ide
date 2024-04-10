@@ -1,6 +1,6 @@
 import React from "react";
 
-function File() {
+function File({ dir }: { dir: string }) {
   return <div></div>;
 }
 

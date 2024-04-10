@@ -1,0 +1,16 @@
+.filetree-folder-button p {
+  margin: 0px;
+}
+
+.filetree-folder-button {
+  margin: 10px;
+  margin-left: 10px;
+  width: fit-content;
+}
+
+.filetree-folder-button-text {
+  padding-left: 10px;
+
+  display: flex;
+  flex-direction: row;
+}

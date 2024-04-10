@@ -103,6 +103,7 @@ ipcMain.on("readDirFiles", (event, dirPath) => {
     event.sender.send("readDirFilesResponse", {
       error: false,
       data: filesAndDirs,
+      dir: dirPath,
     });
   });
 });
