@@ -52,7 +52,7 @@ function Folder({ dir }: { dir: string }) {
                     dir={dir + "/" + item.name}
                   />
                 );
-              } else if (item.type === "f") {
+              } else if (item.type === "file") {
                 <File
                   key={dir + "/" + item.name}
                   dir={dir + "/" + item.name}
