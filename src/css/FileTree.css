@@ -14,3 +14,13 @@
   display: flex;
   flex-direction: row;
 }
+
+.filetree-file {
+  padding-left: 40px;
+
+  display: flex;
+  flex-direction: row;
+
+  font-family: "Tilt Neon";
+  color: #cdd6f4;
+}

@@ -53,10 +53,12 @@ function Folder({ dir }: { dir: string }) {
                   />
                 );
               } else if (item.type === "file") {
-                <File
-                  key={dir + "/" + item.name}
-                  dir={dir + "/" + item.name}
-                />;
+                return (
+                  <File
+                    key={dir + "/" + item.name}
+                    dir={dir + "/" + item.name}
+                  />
+                );
               }
             })
           )}
