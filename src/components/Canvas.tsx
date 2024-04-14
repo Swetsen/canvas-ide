@@ -1,7 +1,12 @@
 import React from "react";
+import CanvasWindow from "./CanvasWindow";
 
 function Canvas() {
-  return <div></div>;
+  return (
+    <div className="canvas">
+      <CanvasWindow />
+    </div>
+  );
 }
 
 export default Canvas;

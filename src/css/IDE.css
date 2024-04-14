@@ -34,3 +34,7 @@ p {
   font-family: "Tilt Neon";
   color: #cdd6f4;
 }
+
+.canvas {
+  background-color: white;
+}

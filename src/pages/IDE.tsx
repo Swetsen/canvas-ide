@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import FileTree from "../components/FileTree";
+import Canvas from "../components/Canvas";
 
 function IDE() {
   useEffect(() => {
@@ -20,6 +21,9 @@ function IDE() {
     <>
       <div className="filetree">
         <FileTree dir={dir} />
+      </div>
+      <div>
+        <Canvas />
       </div>
     </>
   );
